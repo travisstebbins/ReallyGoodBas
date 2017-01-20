@@ -38,6 +38,7 @@ GameObject:
   - component: {fileID: 114526081571759270}
   - component: {fileID: 50575860158087746}
   - component: {fileID: 58380660994180388}
+  - component: {fileID: 61166574548594960}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -52,7 +53,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1233870743260446}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.57, z: 0}
+  m_LocalPosition: {x: 0, y: -1.019, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4597088429930228}
@@ -103,9 +104,23 @@ CircleCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: -0.56}
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 0.45
+--- !u!61 &61166574548594960
+BoxCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1945707239763156}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: 0.21}
+  serializedVersion: 2
+  m_Size: {x: 0.9, y: 1.51}
 --- !u!114 &114526081571759270
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -118,7 +133,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxSpeed: 10
-  jumpHeight: 10
+  jumpHeight: 5
   groundCheckRadius: 0.5
 --- !u!212 &212404037019229426
 SpriteRenderer:

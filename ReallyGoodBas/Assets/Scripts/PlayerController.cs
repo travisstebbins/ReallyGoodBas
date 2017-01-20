@@ -8,7 +8,7 @@ public class PlayerController : MonoBehaviour {
 
 	// public variables
 	public float maxSpeed = 10f;
-	public float jumpHeight = 10f;
+	public float jumpHeight = 5f;
 	public float groundCheckRadius = 0.5f;
 
 	// components
