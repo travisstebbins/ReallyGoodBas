@@ -10,18 +10,21 @@ public class PlayerController : MonoBehaviour {
 	public float maxSpeed = 10f;
 	public float jumpHeight = 5f;
 	public float groundCheckRadius = 0.1f;
+	public float wallCheckRadius = 0.3f;
 	public float wallJumpMaxForce = 100f;
 	public float wallJumpDeceleration = 0.5f;
 
 	// components
 	private Rigidbody2D rb;
 	private GameObject groundCheck;
+	private GameObject wallCheck;
 
 	// private variables
 	private int color = 1;
 	private bool isGrounded = false;
 	private bool wallJumping = false;
-	int wallJumpDirection = -1;
+	private int wallJumpDirection = -1;
+	private int prevWallJumpDirection = 1;
 	private float wallJumpForce = 10f;
 	private LayerMask groundLayerMask;
 	private LayerMask jumpWallLayerMask;
@@ -32,6 +35,7 @@ public class PlayerController : MonoBehaviour {
 	void Start () {
 		rb = GetComponent<Rigidbody2D> ();
 		groundCheck = GameObject.FindGameObjectWithTag ("PlayerGroundCheck");
+		wallCheck = GameObject.FindGameObjectWithTag ("PlayerWallCheck");
 		groundLayerMask = LayerMask.GetMask ("Ground");
 		jumpWallLayerMask = LayerMask.GetMask ("JumpWall");
 		redObjects = GameObject.FindGameObjectsWithTag ("Red");
@@ -50,14 +54,21 @@ public class PlayerController : MonoBehaviour {
 			wallJumping = false;
 		}
 		if (Input.GetButton("Jump")) {
-			Collider2D jumpWall = Physics2D.OverlapCircle (groundCheck.transform.position, groundCheckRadius, jumpWallLayerMask);
-			if (jumpWall) {
-				Debug.Log ("Jump wall");
-				wallJumpDirection = (transform.position.x < jumpWall.gameObject.transform.position.x) ? -1 : 1;
-				Debug.Log (wallJumpDirection);
+			Collider2D touchingWall = Physics2D.OverlapCircle (wallCheck.transform.position, wallCheckRadius, jumpWallLayerMask);
+			if (touchingWall) {
+				prevWallJumpDirection = wallJumpDirection;
+				wallJumpDirection = (transform.position.x < touchingWall.gameObject.transform.position.x) ? -1 : 1;
+				if (!wallJumping) {
+					prevWallJumpDirection = wallJumpDirection * -1;
+				}
 				wallJumping = true;
 				wallJumpForce = wallJumpMaxForce;
-				rb.velocity = new Vector2 (rb.velocity.x, Mathf.Sqrt (2f * jumpHeight * -Physics2D.gravity.y));
+				if (wallJumpDirection == prevWallJumpDirection * -1) {
+					rb.velocity = new Vector2 (rb.velocity.x, Mathf.Sqrt (2f * jumpHeight * -Physics2D.gravity.y));
+				}
+				else {
+					rb.velocity = new Vector2 (rb.velocity.x, rb.velocity.y);
+				}
 			}
 			else if (isGrounded) {
 				rb.velocity = new Vector2 (rb.velocity.x, Mathf.Sqrt (2f * jumpHeight * -Physics2D.gravity.y));
@@ -103,20 +114,24 @@ public class PlayerController : MonoBehaviour {
 
 	void FixedUpdate () {
 		isGrounded = Physics2D.OverlapCircle (groundCheck.transform.position, groundCheckRadius, groundLayerMask);
+		Collider2D jumpWall = Physics2D.OverlapCircle (wallCheck.transform.position, wallCheckRadius, jumpWallLayerMask);
 		float moveX = Input.GetAxis ("Horizontal");
 		if (wallJumping) {
-			if (moveX * wallJumpDirection > 0) {
-				rb.velocity = new Vector2 (moveX * maxSpeed + (wallJumping ? (wallJumpDirection * wallJumpForce) : 0), rb.velocity.y);
+			if (!jumpWall) {
+				rb.velocity = new Vector2 (moveX * maxSpeed + (wallJumpDirection * wallJumpForce), rb.velocity.y);
 			}
-			else {
+			else if (wallJumpDirection == prevWallJumpDirection * -1) {
 				rb.velocity = new Vector2 (wallJumpDirection * wallJumpForce, rb.velocity.y);
 			}
+//			else {
+//				rb.velocity = new Vector2 (wallJumpDirection * wallJumpForce, rb.velocity.y);
+//			}
 			wallJumpForce -= wallJumpDeceleration;
 			if (wallJumpForce < 0) {
 				wallJumpForce = 0;
 			}
 		}
-		else {
+		else if (!jumpWall || isGrounded) {
 			rb.velocity = new Vector2 (moveX * maxSpeed, rb.velocity.y);
 		}
 	}

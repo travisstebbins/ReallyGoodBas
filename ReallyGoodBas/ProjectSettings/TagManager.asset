@@ -9,6 +9,7 @@ TagManager:
   - Green
   - Blue
   - JumpWall
+  - PlayerWallCheck
   layers:
   - Default
   - TransparentFX

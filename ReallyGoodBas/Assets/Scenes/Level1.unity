@@ -177,6 +177,21 @@ Prefab:
       propertyPath: wallJumpMaxForce
       value: 15
       objectReference: {fileID: 0}
+    - target: {fileID: 114526081571759270, guid: 3b5843164a17649adbdf551d993d9668,
+        type: 2}
+      propertyPath: groundCheckRadius
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114526081571759270, guid: 3b5843164a17649adbdf551d993d9668,
+        type: 2}
+      propertyPath: wallCheckRadius
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114526081571759270, guid: 3b5843164a17649adbdf551d993d9668,
+        type: 2}
+      propertyPath: wallJumpDeceleration
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3b5843164a17649adbdf551d993d9668, type: 2}
   m_IsPrefabParent: 0
@@ -285,6 +300,11 @@ Prefab:
     - {fileID: 50336717273418606, guid: e27db3021573141b6863fb02c7513345, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: e27db3021573141b6863fb02c7513345, type: 2}
   m_IsPrefabParent: 0
+--- !u!4 &760648655 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 4597088429930228, guid: 3b5843164a17649adbdf551d993d9668,
+    type: 2}
+  m_PrefabInternal: {fileID: 602020471}
 --- !u!1001 &784773258
 Prefab:
   m_ObjectHideFlags: 0
@@ -294,7 +314,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4888827585602806, guid: e27db3021573141b6863fb02c7513345, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 17.63
+      value: 20.49
       objectReference: {fileID: 0}
     - target: {fileID: 4888827585602806, guid: e27db3021573141b6863fb02c7513345, type: 2}
       propertyPath: m_LocalPosition.y
@@ -529,3 +549,33 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2a6c68ffa2e5d4e2d9a76a0a276da1c0, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &1875879013
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 1233870743260446, guid: 3b5843164a17649adbdf551d993d9668,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1875879014}
+  m_Layer: 0
+  m_Name: PlayerWallCheck
+  m_TagString: PlayerWallCheck
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1875879014
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 4086179515839364, guid: 3b5843164a17649adbdf551d993d9668,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1875879013}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.04, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 760648655}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
