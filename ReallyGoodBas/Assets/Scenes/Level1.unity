@@ -172,6 +172,11 @@ Prefab:
       propertyPath: m_RootOrder
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 50575860158087746, guid: 3b5843164a17649adbdf551d993d9668,
+        type: 2}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 6200000, guid: 911d50c276f07440c9d1ae3226229403, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3b5843164a17649adbdf551d993d9668, type: 2}
   m_IsPrefabParent: 0
@@ -321,7 +326,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 6.02
+  orthographic size: 8
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -359,6 +364,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af6507606839c48748c30066bcdb3909, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  scrollDistanceXProportion: 0.7
+  scrollDistanceYProportion: 0.7
+  defaultZ: -10
 --- !u!1001 &1421077978
 Prefab:
   m_ObjectHideFlags: 0
