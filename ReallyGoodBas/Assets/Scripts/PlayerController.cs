@@ -30,6 +30,12 @@ public class PlayerController : MonoBehaviour {
 		redObjects = GameObject.FindGameObjectsWithTag ("Red");
 		greenObjects = GameObject.FindGameObjectsWithTag ("Green");
 		blueObjects = GameObject.FindGameObjectsWithTag ("Blue");
+		for (int i = 0; i < greenObjects.Length; ++i) {
+			greenObjects [i].SetActive (false);
+		}
+		for (int i = 0; i < blueObjects.Length; ++i) {
+			blueObjects [i].SetActive (false);
+		}
 	}
 
 	void Update () {
