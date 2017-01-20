@@ -88,7 +88,7 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 911d50c276f07440c9d1ae3226229403, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 1
@@ -135,6 +135,8 @@ MonoBehaviour:
   maxSpeed: 10
   jumpHeight: 5
   groundCheckRadius: 0.5
+  wallJumpMaxForce: 30
+  wallJumpDeceleration: 2
 --- !u!212 &212404037019229426
 SpriteRenderer:
   m_ObjectHideFlags: 1
