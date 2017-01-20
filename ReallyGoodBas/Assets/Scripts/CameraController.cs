@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour {
 
-	// Use this for initialization
+	private GameObject player;
+
 	void Start () {
-		
+		player = GameObject.FindGameObjectWithTag ("Player");
 	}
-	
-	// Update is called once per frame
+
 	void Update () {
-		
+		gameObject.transform.position = new Vector3 (player.gameObject.transform.position.x, player.gameObject.transform.position.y, -10);
 	}
 }
