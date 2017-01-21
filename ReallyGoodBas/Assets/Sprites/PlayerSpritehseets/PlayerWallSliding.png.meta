@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: a2f8785293aa341faa5ee00b07294b85
-timeCreated: 1485014086
+timeCreated: 1485034789
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -8,6 +8,10 @@ TextureImporter:
     21300002: PlayerWallSliding_1
     21300004: PlayerWallSliding_2
     21300006: PlayerWallSliding_3
+    21300008: PlayerWallSliding_4
+    21300010: PlayerWallSliding_5
+    21300012: PlayerWallSliding_6
+    21300014: PlayerWallSliding_7
   serializedVersion: 4
   mipmaps:
     mipMapMode: 0
@@ -93,12 +97,12 @@ TextureImporter:
       name: PlayerWallSliding_0
       rect:
         serializedVersion: 2
-        x: 19
-        y: 260
-        width: 328
-        height: 465
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        x: 0
+        y: 0
+        width: 362
+        height: 790
+      alignment: 9
+      pivot: {x: 0.5042654, y: 0.61729455}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
@@ -106,12 +110,12 @@ TextureImporter:
       name: PlayerWallSliding_1
       rect:
         serializedVersion: 2
-        x: 363
-        y: 225
-        width: 347
-        height: 537
+        x: 373
+        y: 0
+        width: 352
+        height: 790
       alignment: 9
-      pivot: {x: 0.46816972, y: 0.49412334}
+      pivot: {x: 0.43580005, y: 0.61729455}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
@@ -119,12 +123,12 @@ TextureImporter:
       name: PlayerWallSliding_2
       rect:
         serializedVersion: 2
-        x: 718
-        y: 214
-        width: 376
-        height: 557
+        x: 732
+        y: 0
+        width: 405
+        height: 790
       alignment: 9
-      pivot: {x: 0.44093177, y: 0.50596917}
+      pivot: {x: 0.36865625, y: 0.62399715}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
@@ -132,12 +136,12 @@ TextureImporter:
       name: PlayerWallSliding_3
       rect:
         serializedVersion: 2
-        x: 1103
-        y: 205
-        width: 377
-        height: 577
+        x: 1137
+        y: 0
+        width: 436
+        height: 790
       alignment: 9
-      pivot: {x: 0.43976104, y: 0.50000006}
+      pivot: {x: 0.29641527, y: 0.6259744}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0

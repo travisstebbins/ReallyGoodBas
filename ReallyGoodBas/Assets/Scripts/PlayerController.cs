@@ -210,6 +210,7 @@ public class PlayerController : MonoBehaviour {
 		float moveX = Input.GetAxis ("Horizontal");
 		rb.velocity = new Vector3 (moveX * maxSpeed * slideSpeed, 0, rb.velocity.z);
 		sliding = true;
+		anim.Setsd ("slide");
 		yield return new WaitForSeconds (slideDuration);
 		sliding = false;
 		boxColl.center = new Vector3 (boxColl.center.x, 0.35f, boxColl.center.z);

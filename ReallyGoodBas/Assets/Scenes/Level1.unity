@@ -2012,19 +2012,19 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4897938190792752, guid: d77af08ba51c14461962504bf8bcb50a, type: 2}
       propertyPath: m_LocalRotation.x
-      value: 0.70710576
+      value: 0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: 4897938190792752, guid: d77af08ba51c14461962504bf8bcb50a, type: 2}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4897938190792752, guid: d77af08ba51c14461962504bf8bcb50a, type: 2}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4897938190792752, guid: d77af08ba51c14461962504bf8bcb50a, type: 2}
       propertyPath: m_LocalRotation.w
-      value: 0.70710784
+      value: 0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: 4897938190792752, guid: d77af08ba51c14461962504bf8bcb50a, type: 2}
       propertyPath: m_RootOrder
@@ -2044,6 +2044,19 @@ Prefab:
         type: 2}
       propertyPath: m_Interpolate
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4772578105324284, guid: d77af08ba51c14461962504bf8bcb50a, type: 2}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114724961997755626, guid: d77af08ba51c14461962504bf8bcb50a,
+        type: 2}
+      propertyPath: groundCheckRadius
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4897938190792752, guid: d77af08ba51c14461962504bf8bcb50a, type: 2}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 90
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d77af08ba51c14461962504bf8bcb50a, type: 2}
@@ -2569,7 +2582,7 @@ Transform:
   m_GameObject: {fileID: 1954656955}
   m_LocalRotation: {x: -0.5000008, y: 0.49999925, z: -0.49999925, w: 0.5000008}
   m_LocalPosition: {x: -23.8, y: -26.1, z: 9.44}
-  m_LocalScale: {x: 3.9392185, y: 1.952596, z: 32.76791}
+  m_LocalScale: {x: 3.9392185, y: 1.9525964, z: 32.76791}
   m_Children: []
   m_Father: {fileID: 2101271449}
   m_RootOrder: 4

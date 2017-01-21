@@ -1,10 +1,12 @@
 fileFormatVersion: 2
 guid: 8ce4a0fd89a6e425dae81a0c7809f75c
-timeCreated: 1485014165
+timeCreated: 1485034095
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
     21300000: PlayerJumping_0
+    21300002: PlayerJumping_1
+    21300004: PlayerJumping_2
   serializedVersion: 4
   mipmaps:
     mipMapMode: 0
@@ -87,15 +89,15 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: PlayerJumping_0
+      name: PlayerJumping_2
       rect:
         serializedVersion: 2
-        x: 87
+        x: 20
         y: 277
         width: 261
         height: 388
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
