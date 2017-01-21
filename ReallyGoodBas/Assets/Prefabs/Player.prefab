@@ -20,6 +20,21 @@ GameObject:
   m_Component:
   - component: {fileID: 4086179515839364}
   m_Layer: 0
+  m_Name: PlayerWallCheck
+  m_TagString: PlayerWallCheck
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &1572468860393008
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4706123755626214}
+  m_Layer: 0
   m_Name: PlayerGroundCheck
   m_TagString: PlayerGroundCheck
   m_Icon: {fileID: 0}
@@ -52,12 +67,12 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1233870743260446}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -1.019, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.04, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4597088429930228}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4597088429930228
 Transform:
@@ -69,8 +84,22 @@ Transform:
   m_LocalPosition: {x: 1.64, y: -2.46, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 4706123755626214}
   - {fileID: 4086179515839364}
   m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4706123755626214
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1572468860393008}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -1.019, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4597088429930228}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!50 &50575860158087746
@@ -134,9 +163,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxSpeed: 10
   jumpHeight: 5
-  groundCheckRadius: 0.5
-  wallJumpMaxForce: 30
-  wallJumpDeceleration: 2
+  groundCheckRadius: 0.1
+  wallCheckRadius: 0.5
+  wallJumpMaxForce: 17.5
+  wallJumpDeceleration: 1
+  slideSpeed: 2
+  slideDuration: 0.4
 --- !u!212 &212404037019229426
 SpriteRenderer:
   m_ObjectHideFlags: 1
