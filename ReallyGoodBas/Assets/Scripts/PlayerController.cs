@@ -5,6 +5,7 @@ using System;
 using System.Security.Policy;
 using UnityEngine.SocialPlatforms;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour {
 
@@ -146,6 +147,13 @@ public class PlayerController : MonoBehaviour {
 		}
 	}
 
+	void OnCollisionEnter (Collision collision) {
+		if (collision.gameObject.CompareTag("Spike")) {
+			Debug.Log ("spike!");
+			KillPlayer ();
+		}
+	}
+
 	void Flip () {
 		facingRight = !facingRight;
 		Vector3 scale = transform.localScale;
@@ -190,6 +198,10 @@ public class PlayerController : MonoBehaviour {
 		for (int i = 0; i < blueObjects.Length; ++i) {
 			blueObjects [i].SetActive (true);
 		}
+	}
+
+	void KillPlayer () {
+		SceneManager.LoadScene ("Level1");
 	}
 
 	IEnumerator SlideCoroutine (float slideDuration) {

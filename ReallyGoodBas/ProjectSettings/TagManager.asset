@@ -11,6 +11,7 @@ TagManager:
   - JumpWall
   - PlayerWallCheck
   - Spike
+  - SpawnPoint
   layers:
   - Default
   - TransparentFX
