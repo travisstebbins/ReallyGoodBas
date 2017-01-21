@@ -455,6 +455,8 @@ PlayerSettings:
   cloudServicesEnabled:
     Build: 0
     Collab: 0
+    ErrorHub: 0
+    Hub: 0
     UNet: 1
   cloudProjectId: bb6d1bfd-1bd6-4b4e-8972-727312b9f55e
   projectName: ReallyGoodBas
