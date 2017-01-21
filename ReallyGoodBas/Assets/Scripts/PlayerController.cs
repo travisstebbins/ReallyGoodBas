@@ -99,7 +99,7 @@ public class PlayerController : MonoBehaviour {
 				rb.velocity = new Vector3 (rb.velocity.x, 0, Mathf.Sqrt (2f * jumpHeight * -Physics.gravity.z));
 			}
 		}
-		else if (Input.GetButton("Slide") && isGrounded) {
+		else if (Input.GetButton("Slide") && isGrounded && Input.GetAxis("Horizontal") != 0) {
 			anim.SetTrigger ("slide");
 			StartCoroutine (SlideCoroutine (slideDuration));
 		}
@@ -164,12 +164,9 @@ public class PlayerController : MonoBehaviour {
 	}
 
 	void Flip () {
-		if (facingRight) {
-			transform.rotation = Quaternion.Euler (new Vector3 (-90, 180, transform.rotation.z));
-		}
-		else {
-			transform.rotation = Quaternion.Euler (new Vector3 (90, 0, transform.rotation.z));
-		}
+		Vector3 scale = transform.localScale;
+		scale.x *= -1;
+		transform.localScale = scale;
 		facingRight = !facingRight;
 	}
 
