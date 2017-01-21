@@ -51,13 +51,20 @@ public class PlayerController : MonoBehaviour {
 		rb = GetComponent<Rigidbody> ();
 		boxColl = GetComponent<BoxCollider> ();
 		anim = GetComponent<Animator> ();
-		groundCheck = GameObject.FindGameObjectWithTag ("PlayerGroundCheck");
-		wallCheck = GameObject.FindGameObjectWithTag ("PlayerWallCheck");
 		groundLayerMask = LayerMask.GetMask ("Ground");
 		jumpWallLayerMask = LayerMask.GetMask ("JumpWall");
 		redObjects = GameObject.FindGameObjectsWithTag ("Red");
 		greenObjects = GameObject.FindGameObjectsWithTag ("Green");
 		blueObjects = GameObject.FindGameObjectsWithTag ("Blue");
+		Transform[] testTransform = GetComponentsInChildren<Transform> ();
+		for (int i = 0; i < testTransform.Length; ++i) {
+			if (testTransform[i].gameObject.CompareTag("PlayerGroundCheck")) {
+				groundCheck = testTransform [i].gameObject;
+			}
+			else if (testTransform[i].gameObject.CompareTag("PlayerWallCheck")) {
+				wallCheck = testTransform [i].gameObject;
+			}
+		}
 		for (int i = 0; i < greenObjects.Length; ++i) {
 			greenObjects [i].SetActive (false);
 		}
@@ -93,6 +100,7 @@ public class PlayerController : MonoBehaviour {
 			}
 		}
 		else if (Input.GetButton("Slide") && isGrounded) {
+			anim.SetTrigger ("slide");
 			StartCoroutine (SlideCoroutine (slideDuration));
 		}
 		if (!automaticCycle) {
@@ -107,7 +115,8 @@ public class PlayerController : MonoBehaviour {
 	}
 
 	void FixedUpdate () {
-		isGrounded = (Physics.OverlapSphere (groundCheck.transform.position, groundCheckRadius, groundLayerMask)).Length > 0;
+		Collider[] groundObjects = Physics.OverlapSphere (groundCheck.transform.position, groundCheckRadius, groundLayerMask);
+		isGrounded = groundObjects.Length > 0;
 		Collider[] touchingWall = Physics.OverlapSphere (wallCheck.transform.position, wallCheckRadius, jumpWallLayerMask);
 		anim.SetBool ("isJumping", !isGrounded);
 		if (isGrounded) {
@@ -155,10 +164,13 @@ public class PlayerController : MonoBehaviour {
 	}
 
 	void Flip () {
+		if (facingRight) {
+			transform.rotation = Quaternion.Euler (new Vector3 (-90, 180, transform.rotation.z));
+		}
+		else {
+			transform.rotation = Quaternion.Euler (new Vector3 (90, 0, transform.rotation.z));
+		}
 		facingRight = !facingRight;
-		Vector3 scale = transform.localScale;
-		scale.x *= -1;
-		transform.localScale = scale;
 	}
 
 	void SetRed () {
@@ -210,11 +222,11 @@ public class PlayerController : MonoBehaviour {
 		float moveX = Input.GetAxis ("Horizontal");
 		rb.velocity = new Vector3 (moveX * maxSpeed * slideSpeed, 0, rb.velocity.z);
 		sliding = true;
-		anim.Setsd ("slide");
 		yield return new WaitForSeconds (slideDuration);
 		sliding = false;
 		boxColl.center = new Vector3 (boxColl.center.x, 0.35f, boxColl.center.z);
 		boxColl.size = new Vector3 (boxColl.size.x, 3.1f, boxColl.size.z);
+		anim.ResetTrigger ("slide");
 	}
 
 	IEnumerator JustWallJumpedCoroutine (float wallJumpDuration) {
