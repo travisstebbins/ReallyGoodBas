@@ -73,8 +73,10 @@ public class PlayerController : MonoBehaviour {
 				Debug.Log ("wallJumpDirection: " + wallJumpDirection + ", prevWallJumpDirection: " + prevWallJumpDirection);
 				wallJumping = true;
 				if (wallJumpDirection == prevWallJumpDirection * -1) {
-					Debug.Log ("Wall Jump!");
-					StartCoroutine (JustWallJumpedCoroutine (wallJumpDuration));
+					if (wallJumpDirection * Input.GetAxis ("Horizontal") < 0) {
+						Debug.Log ("Wall Jump!");
+						StartCoroutine (JustWallJumpedCoroutine (wallJumpDuration));
+					}
 				}
 			}
 			else if (isGrounded) {
@@ -154,7 +156,10 @@ public class PlayerController : MonoBehaviour {
 		}
 		if (wallJumping) {
 			if (!justWallJumped) {
-				rb.AddForce (new Vector2 (moveX * wallJumpMovementMultiplier, 0));
+//				if (rb.velocity.x < maxSpeed) {
+//					rb.AddForce (new Vector2 (moveX * wallJumpMovementMultiplier, 0));
+//				}
+				rb.velocity = new Vector2 (moveX * maxSpeed, rb.velocity.y);
 			}
 		}
 		else if (!sliding) {
