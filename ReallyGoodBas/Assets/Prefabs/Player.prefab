@@ -54,6 +54,7 @@ GameObject:
   - component: {fileID: 50575860158087746}
   - component: {fileID: 58380660994180388}
   - component: {fileID: 61166574548594960}
+  - component: {fileID: 95716205635186392}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -81,7 +82,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1945707239763156}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -15.3, y: 6.7, z: 0}
+  m_LocalPosition: {x: -12.6, y: -24.1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4706123755626214}
@@ -96,7 +97,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1572468860393008}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -1.019, z: 0}
+  m_LocalPosition: {x: 0, y: -1.95, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4597088429930228}
@@ -133,7 +134,7 @@ CircleCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
-  m_Offset: {x: 0, y: -0.56}
+  m_Offset: {x: 0, y: -1.44}
   serializedVersion: 2
   m_Radius: 0.45
 --- !u!61 &61166574548594960
@@ -147,9 +148,26 @@ BoxCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
-  m_Offset: {x: 0, y: 0.21}
+  m_Offset: {x: 0, y: 0.18}
   serializedVersion: 2
-  m_Size: {x: 0.9, y: 1.51}
+  m_Size: {x: 0.9, y: 3.29}
+--- !u!95 &95716205635186392
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1945707239763156}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 850238c052ae24f45b6735371951fea5, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &114526081571759270
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -165,10 +183,10 @@ MonoBehaviour:
   jumpHeight: 5
   groundCheckRadius: 0.2
   wallCheckRadius: 0.5
-  wallJumpMaxForce: 17.5
+  wallJumpMaxForce: 400
   wallJumpDeceleration: 1
   wallJumpDuration: 0.5
-  wallJumpMovementMultiplier: 50
+  wallJumpMovementMultiplier: 100
   slideSpeed: 2
   slideDuration: 0.2
 --- !u!212 &212404037019229426
@@ -202,7 +220,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 2c2d8554a36c6421c9b8b8a7821cab01, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 91ed1e8e8f7e749eab377b2d73fd8e89, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

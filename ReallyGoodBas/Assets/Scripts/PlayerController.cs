@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 using System.Security.Policy;
+using UnityEngine.SocialPlatforms;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour {
 
@@ -12,7 +14,6 @@ public class PlayerController : MonoBehaviour {
 	public float groundCheckRadius = 0.1f;
 	public float wallCheckRadius = 0.3f;
 	public float wallJumpMaxForce = 500f;
-	public float wallJumpDeceleration = 0.5f;
 	public float wallJumpDuration = 0.5f;
 	public float wallJumpMovementMultiplier = 200f;
 	public float slideSpeed = 2f;
@@ -23,6 +24,7 @@ public class PlayerController : MonoBehaviour {
 	private GameObject groundCheck;
 	private GameObject wallCheck;
 	private BoxCollider2D boxColl;
+	private Animator anim;
 
 	// private variables
 	private int color = 1;
@@ -32,6 +34,7 @@ public class PlayerController : MonoBehaviour {
 	private int prevWallJumpDirection = 1;
 	private bool justWallJumped = false;
 	private bool sliding = false;
+	private bool facingRight = true;
 	private LayerMask groundLayerMask;
 	private LayerMask jumpWallLayerMask;
 	private GameObject[] redObjects;
@@ -41,6 +44,7 @@ public class PlayerController : MonoBehaviour {
 	void Start () {
 		rb = GetComponent<Rigidbody2D> ();
 		boxColl = GetComponent<BoxCollider2D> ();
+		anim = GetComponent<Animator> ();
 		groundCheck = GameObject.FindGameObjectWithTag ("PlayerGroundCheck");
 		wallCheck = GameObject.FindGameObjectWithTag ("PlayerWallCheck");
 		groundLayerMask = LayerMask.GetMask ("Ground");
@@ -57,21 +61,20 @@ public class PlayerController : MonoBehaviour {
 	}
 
 	void Update () {
+		Collider2D touchingWall = Physics2D.OverlapCircle (wallCheck.transform.position, wallCheckRadius, jumpWallLayerMask);
+		anim.SetBool ("isWallSliding", touchingWall && !isGrounded);
 		if (Input.GetButton("Jump")) {
-			Collider2D touchingWall = Physics2D.OverlapCircle (wallCheck.transform.position, wallCheckRadius, jumpWallLayerMask);
 			if (touchingWall) {
 				prevWallJumpDirection = wallJumpDirection;
 				wallJumpDirection = (transform.position.x < touchingWall.gameObject.transform.position.x) ? -1 : 1;
 				if (!wallJumping) {
 					prevWallJumpDirection = wallJumpDirection * -1;
 				}
+				Debug.Log ("wallJumpDirection: " + wallJumpDirection + ", prevWallJumpDirection: " + prevWallJumpDirection);
 				wallJumping = true;
-				StartCoroutine (JustWallJumpedCoroutine (wallJumpDuration));
 				if (wallJumpDirection == prevWallJumpDirection * -1) {
-					rb.velocity = new Vector2 (rb.velocity.x, Mathf.Sqrt (2f * jumpHeight * -Physics2D.gravity.y));
-				}
-				else {
-					rb.velocity = new Vector2 (rb.velocity.x, rb.velocity.y);
+					Debug.Log ("Wall Jump!");
+					StartCoroutine (JustWallJumpedCoroutine (wallJumpDuration));
 				}
 			}
 			else if (isGrounded) {
@@ -121,10 +124,34 @@ public class PlayerController : MonoBehaviour {
 
 	void FixedUpdate () {
 		isGrounded = Physics2D.OverlapCircle (groundCheck.transform.position, groundCheckRadius, groundLayerMask);
+		Collider2D touchingWall = Physics2D.OverlapCircle (wallCheck.transform.position, wallCheckRadius, jumpWallLayerMask);
+		anim.SetBool ("isJumping", !isGrounded);
 		if (isGrounded) {
+			anim.SetBool ("isWallSliding", false);
 			wallJumping = false;
 		}
 		float moveX = Input.GetAxis ("Horizontal");
+		if (moveX < 0) {
+			anim.SetBool ("isRunning", true);
+			if (facingRight) {
+				Flip ();
+			}
+		}
+		else if (moveX > 0) {
+			anim.SetBool ("isRunning", true);
+			if (!facingRight) {
+				Flip ();
+			}
+		}
+		else {
+			anim.SetBool ("isRunning", false);
+		}
+		if (touchingWall && !justWallJumped) {
+			int wallSlideDirection = (transform.position.x < touchingWall.gameObject.transform.position.x) ? -1 : 1;
+			if (wallSlideDirection * moveX < 0 && !isGrounded) {
+				rb.velocity = new Vector2 (rb.velocity.x, -1);
+			}
+		}
 		if (wallJumping) {
 			if (!justWallJumped) {
 				rb.AddForce (new Vector2 (moveX * wallJumpMovementMultiplier, 0));
@@ -135,20 +162,28 @@ public class PlayerController : MonoBehaviour {
 		}
 	}
 
+	void Flip () {
+		facingRight = !facingRight;
+		Vector2 scale = transform.localScale;
+		scale.x *= -1;
+		transform.localScale = scale;
+	}
+
 	IEnumerator SlideCoroutine (float slideDuration) {
-		boxColl.offset = new Vector2 (boxColl.offset.x, -0.12f);
-		boxColl.size = new Vector2 (boxColl.size.x, 0.9f);
+		boxColl.offset = new Vector2 (boxColl.offset.x, -0.84f);
+		boxColl.size = new Vector2 (boxColl.size.x, 0.99f);
 		float moveX = Input.GetAxis ("Horizontal");
 		rb.velocity = new Vector2 (moveX * maxSpeed * slideSpeed, rb.velocity.y);
 		sliding = true;
 		yield return new WaitForSeconds (slideDuration);
 		sliding = false;
-		boxColl.offset = new Vector2 (boxColl.offset.x, 0.21f);
-		boxColl.size = new Vector2 (boxColl.size.x, 1.51f);
+		boxColl.offset = new Vector2 (boxColl.offset.x, 0.19f);
+		boxColl.size = new Vector2 (boxColl.size.x, 3.29f);
 	}
 
 	IEnumerator JustWallJumpedCoroutine (float wallJumpDuration) {
 		justWallJumped = true;
+		rb.velocity = new Vector2 (rb.velocity.x, Mathf.Sqrt (4f * jumpHeight * -Physics2D.gravity.y));
 		rb.AddForce (new Vector2 (wallJumpDirection * wallJumpMaxForce, 0));
 		yield return new WaitForSeconds (wallJumpDuration);
 		justWallJumped = false;
