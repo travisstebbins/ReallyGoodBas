@@ -11,8 +11,10 @@ public class PlayerController : MonoBehaviour {
 	public float jumpHeight = 5f;
 	public float groundCheckRadius = 0.1f;
 	public float wallCheckRadius = 0.3f;
-	public float wallJumpMaxForce = 100f;
+	public float wallJumpMaxForce = 500f;
 	public float wallJumpDeceleration = 0.5f;
+	public float wallJumpDuration = 0.5f;
+	public float wallJumpMovementMultiplier = 200f;
 	public float slideSpeed = 2f;
 	public float slideDuration = 0.4f;
 
@@ -28,7 +30,7 @@ public class PlayerController : MonoBehaviour {
 	private bool wallJumping = false;
 	private int wallJumpDirection = -1;
 	private int prevWallJumpDirection = 1;
-	private float wallJumpForce = 10f;
+	private bool justWallJumped = false;
 	private bool sliding = false;
 	private LayerMask groundLayerMask;
 	private LayerMask jumpWallLayerMask;
@@ -64,7 +66,7 @@ public class PlayerController : MonoBehaviour {
 					prevWallJumpDirection = wallJumpDirection * -1;
 				}
 				wallJumping = true;
-				wallJumpForce = wallJumpMaxForce;
+				StartCoroutine (JustWallJumpedCoroutine (wallJumpDuration));
 				if (wallJumpDirection == prevWallJumpDirection * -1) {
 					rb.velocity = new Vector2 (rb.velocity.x, Mathf.Sqrt (2f * jumpHeight * -Physics2D.gravity.y));
 				}
@@ -122,21 +124,13 @@ public class PlayerController : MonoBehaviour {
 		if (isGrounded) {
 			wallJumping = false;
 		}
-		Collider2D jumpWall = Physics2D.OverlapCircle (wallCheck.transform.position, wallCheckRadius, jumpWallLayerMask);
 		float moveX = Input.GetAxis ("Horizontal");
 		if (wallJumping) {
-			if (!jumpWall) {
-				rb.velocity = new Vector2 (moveX * maxSpeed + (wallJumpDirection * wallJumpForce), rb.velocity.y);
-			}
-			else if (wallJumpDirection == prevWallJumpDirection * -1) {
-				rb.velocity = new Vector2 (wallJumpDirection * wallJumpForce, rb.velocity.y);
-			}
-			wallJumpForce -= wallJumpDeceleration;
-			if (wallJumpForce < 0) {
-				wallJumpForce = 0;
+			if (!justWallJumped) {
+				rb.AddForce (new Vector2 (moveX * wallJumpMovementMultiplier, 0));
 			}
 		}
-		else if ((!jumpWall || isGrounded) && !sliding) {
+		else if (!sliding) {
 			rb.velocity = new Vector2 (moveX * maxSpeed, rb.velocity.y);
 		}
 	}
@@ -151,5 +145,12 @@ public class PlayerController : MonoBehaviour {
 		sliding = false;
 		boxColl.offset = new Vector2 (boxColl.offset.x, 0.21f);
 		boxColl.size = new Vector2 (boxColl.size.x, 1.51f);
+	}
+
+	IEnumerator JustWallJumpedCoroutine (float wallJumpDuration) {
+		justWallJumped = true;
+		rb.AddForce (new Vector2 (wallJumpDirection * wallJumpMaxForce, 0));
+		yield return new WaitForSeconds (wallJumpDuration);
+		justWallJumped = false;
 	}
 }
