@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 91ed1e8e8f7e749eab377b2d73fd8e89
-timeCreated: 1484997567
+timeCreated: 1485013815
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -9,6 +9,8 @@ TextureImporter:
     21300004: PlayerRunning_2
     21300006: PlayerRunning_3
     21300008: PlayerRunning_4
+    21300010: PlayerRunning_5
+    21300012: PlayerRunning_6
   serializedVersion: 4
   mipmaps:
     mipMapMode: 0
@@ -94,12 +96,12 @@ TextureImporter:
       name: PlayerRunning_0
       rect:
         serializedVersion: 2
-        x: 28
-        y: 77
+        x: 74
+        y: 70
         width: 260
-        height: 492
+        height: 491
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
@@ -107,12 +109,12 @@ TextureImporter:
       name: PlayerRunning_1
       rect:
         serializedVersion: 2
-        x: 485
-        y: 77
-        width: 213
-        height: 493
+        x: 350
+        y: 72
+        width: 298
+        height: 474
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
@@ -120,12 +122,12 @@ TextureImporter:
       name: PlayerRunning_2
       rect:
         serializedVersion: 2
-        x: 832
-        y: 75
-        width: 284
-        height: 498
+        x: 678
+        y: 74
+        width: 213
+        height: 517
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
@@ -133,12 +135,51 @@ TextureImporter:
       name: PlayerRunning_3
       rect:
         serializedVersion: 2
-        x: 1261
-        y: 75
+        x: 933
+        y: 77
+        width: 286
+        height: 540
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: PlayerRunning_4
+      rect:
+        serializedVersion: 2
+        x: 1210
+        y: 77
+        width: 278
+        height: 498
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: PlayerRunning_5
+      rect:
+        serializedVersion: 2
+        x: 1501
+        y: 76
+        width: 276
+        height: 473
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: PlayerRunning_6
+      rect:
+        serializedVersion: 2
+        x: 1796
+        y: 73
         width: 213
         height: 495
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0

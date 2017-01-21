@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 8ce4a0fd89a6e425dae81a0c7809f75c
-timeCreated: 1484997648
+timeCreated: 1485014165
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -90,10 +90,10 @@ TextureImporter:
       name: PlayerJumping_0
       rect:
         serializedVersion: 2
-        x: 66
-        y: 281
+        x: 87
+        y: 277
         width: 261
-        height: 384
+        height: 388
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}

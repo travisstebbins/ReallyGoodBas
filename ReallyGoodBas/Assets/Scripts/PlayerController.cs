@@ -18,6 +18,11 @@ public class PlayerController : MonoBehaviour {
 	public float wallJumpMovementMultiplier = 200f;
 	public float slideSpeed = 2f;
 	public float slideDuration = 0.4f;
+	public bool automaticCycle = false;
+	public float cycleSpeed = 2f;
+	public bool cycleRed = false;
+	public bool cycleGreen = false;
+	public bool cycleBlue = false;
 
 	// components
 	private Rigidbody2D rb;
@@ -58,6 +63,9 @@ public class PlayerController : MonoBehaviour {
 		for (int i = 0; i < blueObjects.Length; ++i) {
 			blueObjects [i].SetActive (false);
 		}
+		if (automaticCycle) {
+			StartCoroutine (AutomaticCycleCoroutine (cycleSpeed));
+		}
 	}
 
 	void Update () {
@@ -86,40 +94,13 @@ public class PlayerController : MonoBehaviour {
 		else if (Input.GetButton("Slide") && isGrounded) {
 			StartCoroutine (SlideCoroutine (slideDuration));
 		}
-		if (Input.GetButton("Red")) {
-			color = 1;
-			for (int i = 0; i < redObjects.Length; ++i) {
-				redObjects [i].SetActive (true);
-			}
-			for (int i = 0; i < greenObjects.Length; ++i) {
-				greenObjects [i].SetActive (false);
-			}
-			for (int i = 0; i < blueObjects.Length; ++i) {
-				blueObjects [i].SetActive (false);
-			}
-		}
-		else if (Input.GetButton("Green")) {
-			color = 2;
-			for (int i = 0; i < redObjects.Length; ++i) {
-				redObjects [i].SetActive (false);
-			}
-			for (int i = 0; i < greenObjects.Length; ++i) {
-				greenObjects [i].SetActive (true);
-			}
-			for (int i = 0; i < blueObjects.Length; ++i) {
-				blueObjects [i].SetActive (false);
-			}
-		}
-		else if (Input.GetButton("Blue")) {
-			color = 3;
-			for (int i = 0; i < redObjects.Length; ++i) {
-				redObjects [i].SetActive (false);
-			}
-			for (int i = 0; i < greenObjects.Length; ++i) {
-				greenObjects [i].SetActive (false);
-			}
-			for (int i = 0; i < blueObjects.Length; ++i) {
-				blueObjects [i].SetActive (true);
+		if (!automaticCycle) {
+			if (Input.GetButton ("Red")) {
+				SetRed ();
+			} else if (Input.GetButton ("Green")) {
+				SetGreen ();
+			} else if (Input.GetButton ("Blue")) {
+				SetBlue ();
 			}
 		}
 	}
@@ -156,9 +137,6 @@ public class PlayerController : MonoBehaviour {
 		}
 		if (wallJumping) {
 			if (!justWallJumped) {
-//				if (rb.velocity.x < maxSpeed) {
-//					rb.AddForce (new Vector2 (moveX * wallJumpMovementMultiplier, 0));
-//				}
 				rb.velocity = new Vector2 (moveX * maxSpeed, rb.velocity.y);
 			}
 		}
@@ -172,6 +150,45 @@ public class PlayerController : MonoBehaviour {
 		Vector2 scale = transform.localScale;
 		scale.x *= -1;
 		transform.localScale = scale;
+	}
+
+	void SetRed () {
+		color = 1;
+		for (int i = 0; i < redObjects.Length; ++i) {
+			redObjects [i].SetActive (true);
+		}
+		for (int i = 0; i < greenObjects.Length; ++i) {
+			greenObjects [i].SetActive (false);
+		}
+		for (int i = 0; i < blueObjects.Length; ++i) {
+			blueObjects [i].SetActive (false);
+		}
+	}
+
+	void SetGreen () {
+		color = 2;
+		for (int i = 0; i < redObjects.Length; ++i) {
+			redObjects [i].SetActive (false);
+		}
+		for (int i = 0; i < greenObjects.Length; ++i) {
+			greenObjects [i].SetActive (true);
+		}
+		for (int i = 0; i < blueObjects.Length; ++i) {
+			blueObjects [i].SetActive (false);
+		}
+	}
+
+	void SetBlue () {
+		color = 3;
+		for (int i = 0; i < redObjects.Length; ++i) {
+			redObjects [i].SetActive (false);
+		}
+		for (int i = 0; i < greenObjects.Length; ++i) {
+			greenObjects [i].SetActive (false);
+		}
+		for (int i = 0; i < blueObjects.Length; ++i) {
+			blueObjects [i].SetActive (true);
+		}
 	}
 
 	IEnumerator SlideCoroutine (float slideDuration) {
@@ -192,5 +209,52 @@ public class PlayerController : MonoBehaviour {
 		rb.AddForce (new Vector2 (wallJumpDirection * wallJumpMaxForce, 0));
 		yield return new WaitForSeconds (wallJumpDuration);
 		justWallJumped = false;
+	}
+
+	IEnumerator AutomaticCycleCoroutine (float cycleSpeed) {
+		if (cycleRed) {
+			color = 1;
+			SetRed ();
+		}
+		else if (cycleGreen) {
+			color = 2;
+			SetGreen ();
+		}
+		else if (cycleBlue) {
+			color = 3;
+			SetBlue ();
+		}
+		while (true) {
+			yield return new WaitForSeconds (cycleSpeed);
+			switch (color) {
+			case 1:
+				if (cycleGreen) {
+					color = 2;
+					SetGreen ();
+				} else if (cycleBlue) {
+					color = 3;
+					SetBlue ();
+				}
+				break;
+			case 2:
+				if (cycleBlue) {
+					color = 3;
+					SetBlue ();
+				} else if (cycleRed) {
+					color = 1;
+					SetRed ();
+				}
+				break;
+			case 3:
+				if (cycleRed) {
+					color = 1;
+					SetRed ();
+				} else if (cycleGreen) {
+					color = 2;
+					SetGreen ();
+				}
+				break;
+			}
+		}
 	}
 }

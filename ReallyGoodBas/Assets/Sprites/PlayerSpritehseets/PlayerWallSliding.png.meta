@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: a2f8785293aa341faa5ee00b07294b85
-timeCreated: 1484999595
+timeCreated: 1485014086
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -93,10 +93,10 @@ TextureImporter:
       name: PlayerWallSliding_0
       rect:
         serializedVersion: 2
-        x: 43
-        y: 0
-        width: 327
-        height: 940
+        x: 19
+        y: 260
+        width: 328
+        height: 465
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -106,12 +106,12 @@ TextureImporter:
       name: PlayerWallSliding_1
       rect:
         serializedVersion: 2
-        x: 402
-        y: 0
-        width: 331
-        height: 940
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        x: 363
+        y: 225
+        width: 347
+        height: 537
+      alignment: 9
+      pivot: {x: 0.46816972, y: 0.49412334}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
@@ -119,25 +119,25 @@ TextureImporter:
       name: PlayerWallSliding_2
       rect:
         serializedVersion: 2
-        x: 744
-        y: 0
-        width: 394
-        height: 940
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 22, y: 0, z: 0, w: 0}
+        x: 718
+        y: 214
+        width: 376
+        height: 557
+      alignment: 9
+      pivot: {x: 0.44093177, y: 0.50596917}
+      border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
       name: PlayerWallSliding_3
       rect:
         serializedVersion: 2
-        x: 1154
-        y: 0
-        width: 394
-        height: 940
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        x: 1103
+        y: 205
+        width: 377
+        height: 577
+      alignment: 9
+      pivot: {x: 0.43976104, y: 0.50000006}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
