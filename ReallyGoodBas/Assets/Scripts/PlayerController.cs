@@ -85,11 +85,9 @@ public class PlayerController : MonoBehaviour {
 				if (!wallJumping) {
 					prevWallJumpDirection = wallJumpDirection * -1;
 				}
-				Debug.Log ("wallJumpDirection: " + wallJumpDirection + ", prevWallJumpDirection: " + prevWallJumpDirection);
 				wallJumping = true;
 				if (wallJumpDirection == prevWallJumpDirection * -1) {
 					if (wallJumpDirection * Input.GetAxis ("Horizontal") < 0) {
-						Debug.Log ("Wall Jump!");
 						StartCoroutine (JustWallJumpedCoroutine (wallJumpDuration));
 					}
 				}
@@ -139,7 +137,6 @@ public class PlayerController : MonoBehaviour {
 			anim.SetBool ("isRunning", false);
 		}
 		if (touchingWall.Length > 0 && !justWallJumped) {
-			Debug.Log ("holding onto wall");
 			int wallSlideDirection = (transform.position.x < touchingWall[0].gameObject.transform.position.x) ? -1 : 1;
 			if (wallSlideDirection * moveX < 0 && !isGrounded) {
 				rb.velocity = new Vector3 (rb.velocity.x, 0, -1);
@@ -157,8 +154,13 @@ public class PlayerController : MonoBehaviour {
 
 	void OnCollisionEnter (Collision collision) {
 		if (collision.gameObject.CompareTag("Spike")) {
-			Debug.Log ("spike!");
 			KillPlayer ();
+		}
+	}
+
+	void OnTriggerEnter (Collider coll) {
+		if (coll.gameObject.CompareTag("PowerUp")) {
+			Debug.Log ("Player triggered power-up");
 		}
 	}
 
@@ -214,10 +216,8 @@ public class PlayerController : MonoBehaviour {
 		for (int i = 0; i < redObjects.Count; ++i) {
 			GameObject redObject = redObjects [i];
 			if (redObject.layer == LayerMask.NameToLayer("Enemy")) {
-				Debug.Log ("found red enemy");
 				redObject.GetComponent<BoxCollider> ().enabled = false;
 				redObject.GetComponent<NavMeshAgent> ().speed = 0;
-				Debug.Log (redObject.GetComponent<NavMeshAgent> ().speed);
 			}
 			else {
 				redObject.GetComponent<BoxCollider> ().enabled = false;
@@ -228,7 +228,6 @@ public class PlayerController : MonoBehaviour {
 		for (int i = 0; i < greenObjects.Count; ++i) {
 			GameObject greenObject = greenObjects [i];
 			if (greenObject.layer == LayerMask.NameToLayer("Enemy")) {
-				Debug.Log ("found green enemy");
 				greenObject.GetComponent<BoxCollider> ().enabled = true;
 				greenObject.GetComponent<NavMeshAgent> ().speed = greenObject.GetComponent<EnemyController> ().movementSpeed;
 			}
@@ -241,7 +240,6 @@ public class PlayerController : MonoBehaviour {
 		for (int i = 0; i < blueObjects.Count; ++i) {
 			GameObject blueObject = blueObjects [i];
 			if (blueObject.layer == LayerMask.NameToLayer("Enemy")) {
-				Debug.Log ("found blue enemy");
 				blueObject.GetComponent<BoxCollider> ().enabled = false;
 				blueObject.GetComponent<NavMeshAgent> ().speed = 0;
 			}

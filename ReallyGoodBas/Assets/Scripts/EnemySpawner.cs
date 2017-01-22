@@ -8,14 +8,15 @@ using UnityEngine.Diagnostics;
 public class EnemySpawner : MonoBehaviour {
 
 	// public variables
-	public int minSpawnRate = 5;
-	public int maxSpawnRate = 10;
+	public int minSpawnRate = 15;
+	public int maxSpawnRate = 20;
 	public GameObject redEnemy;
 	public GameObject greenEnemy;
 	public GameObject blueEnemy;
 
 	// private variables
 	private PlayerController player;
+	private int spawnCount = 0;
 
 	// Use this for initialization
 	void Start () {
@@ -51,7 +52,11 @@ public class EnemySpawner : MonoBehaviour {
 				player.AddColoredObject(2, spawnedEnemy);
 				break;
 			}
-			
+			spawnCount++;
+			if (spawnCount % 5 == 0 && minSpawnRate > 1) {
+				minSpawnRate--;
+				maxSpawnRate--;
+			}
 		}
 	}
 }

@@ -12,6 +12,7 @@ TagManager:
   - PlayerWallCheck
   - Spike
   - SpawnPoint
+  - PowerUp
   layers:
   - Default
   - TransparentFX
