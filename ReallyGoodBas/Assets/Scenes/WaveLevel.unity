@@ -539,12 +539,12 @@ Prefab:
     - target: {fileID: 114700625512333756, guid: 94ce658af483146edadc4d0411b6a19f,
         type: 2}
       propertyPath: minSpawnRate
-      value: 15
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 114700625512333756, guid: 94ce658af483146edadc4d0411b6a19f,
         type: 2}
       propertyPath: maxSpawnRate
-      value: 20
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 94ce658af483146edadc4d0411b6a19f, type: 2}
@@ -688,12 +688,12 @@ Prefab:
     - target: {fileID: 114700625512333756, guid: 94ce658af483146edadc4d0411b6a19f,
         type: 2}
       propertyPath: minSpawnRate
-      value: 15
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 114700625512333756, guid: 94ce658af483146edadc4d0411b6a19f,
         type: 2}
       propertyPath: maxSpawnRate
-      value: 20
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 94ce658af483146edadc4d0411b6a19f, type: 2}
@@ -2195,12 +2195,12 @@ Prefab:
     - target: {fileID: 114700625512333756, guid: 94ce658af483146edadc4d0411b6a19f,
         type: 2}
       propertyPath: minSpawnRate
-      value: 15
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 114700625512333756, guid: 94ce658af483146edadc4d0411b6a19f,
         type: 2}
       propertyPath: maxSpawnRate
-      value: 20
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 94ce658af483146edadc4d0411b6a19f, type: 2}
@@ -2703,12 +2703,12 @@ Prefab:
     - target: {fileID: 114700625512333756, guid: 94ce658af483146edadc4d0411b6a19f,
         type: 2}
       propertyPath: minSpawnRate
-      value: 15
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 114700625512333756, guid: 94ce658af483146edadc4d0411b6a19f,
         type: 2}
       propertyPath: maxSpawnRate
-      value: 20
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 94ce658af483146edadc4d0411b6a19f, type: 2}

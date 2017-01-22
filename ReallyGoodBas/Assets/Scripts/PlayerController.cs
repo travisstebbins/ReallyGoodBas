@@ -50,6 +50,7 @@ public class PlayerController : MonoBehaviour {
 	private List<GameObject> redObjects;
 	private List<GameObject> greenObjects;
 	private List<GameObject> blueObjects;
+	private List<GameObject> enemies;
 
 	void Start () {
 		rb = GetComponent<Rigidbody> ();
@@ -156,11 +157,15 @@ public class PlayerController : MonoBehaviour {
 		if (collision.gameObject.CompareTag("Spike")) {
 			KillPlayer ();
 		}
+		if (collision.gameObject.layer == LayerMask.NameToLayer("Enemy")) {
+			KillPlayer ();
+		}
 	}
 
 	void OnTriggerEnter (Collider coll) {
 		if (coll.gameObject.CompareTag("PowerUp")) {
 			Debug.Log ("Player triggered power-up");
+			KillAllEnemies ();
 		}
 	}
 
@@ -293,6 +298,27 @@ public class PlayerController : MonoBehaviour {
 
 	void KillPlayer () {
 		SceneManager.LoadScene (SceneManager.GetActiveScene().name);
+	}
+
+	void KillAllEnemies () {
+		for (int i = 0; i < redObjects.Count; ++i) {
+			if (redObjects [i].layer == LayerMask.NameToLayer ("Enemy")) {
+				Destroy (redObjects [i].gameObject);
+				redObjects.Remove (redObjects [i]);
+			}
+		}
+		for (int i = 0; i < greenObjects.Count; ++i) {
+			if (greenObjects [i].layer == LayerMask.NameToLayer ("Enemy")) {
+				Destroy (greenObjects [i].gameObject);
+				greenObjects.Remove (greenObjects [i]);
+			}
+		}
+		for (int i = 0; i < blueObjects.Count; ++i) {
+			if (blueObjects [i].layer == LayerMask.NameToLayer ("Enemy")) {
+				Destroy (blueObjects [i].gameObject);
+				blueObjects.Remove (blueObjects [i]);
+			}
+		}
 	}
 
 	IEnumerator SlideCoroutine (float slideDuration) {
