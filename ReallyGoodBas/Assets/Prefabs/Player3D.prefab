@@ -165,8 +165,8 @@ MonoBehaviour:
   wallJumpMaxForce: 600
   wallJumpDuration: 0.5
   wallJumpMovementMultiplier: 200
-  slideSpeed: 2
-  slideDuration: 0.2
+  slideSpeed: 1.5
+  slideDuration: 0.5
   automaticCycle: 0
   cycleSpeed: 0.25
   cycleRed: 1

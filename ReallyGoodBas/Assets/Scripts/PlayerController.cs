@@ -210,7 +210,7 @@ public class PlayerController : MonoBehaviour {
 	}
 
 	void KillPlayer () {
-		SceneManager.LoadScene ("Level1");
+		SceneManager.LoadScene (SceneManager.GetActiveScene().name);
 	}
 
 	IEnumerator SlideCoroutine (float slideDuration) {
