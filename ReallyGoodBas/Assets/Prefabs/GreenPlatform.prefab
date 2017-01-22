@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4438055537412380}
   - component: {fileID: 212363588743611126}
   - component: {fileID: 65868642579304066}
+  - component: {fileID: 208293529519864754}
   m_Layer: 8
   m_Name: GreenPlatform
   m_TagString: Green
@@ -53,6 +54,21 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1.0000002, z: 1.58}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!208 &208293529519864754
+NavMeshObstacle:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1324870822008420}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.5, y: 0.5, z: 0.1}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!212 &212363588743611126
 SpriteRenderer:
   m_ObjectHideFlags: 1

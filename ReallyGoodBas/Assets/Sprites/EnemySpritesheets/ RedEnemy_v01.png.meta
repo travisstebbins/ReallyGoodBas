@@ -1,0 +1,204 @@
+fileFormatVersion: 2
+guid: 93d3d73501e8c43ca84255ad1108adb3
+timeCreated: 1485083348
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: ' RedEnemy_v01_0'
+    21300002: ' RedEnemy_v01_1'
+    21300004: ' RedEnemy_v01_2'
+    21300006: ' RedEnemy_v01_3'
+    21300008: RedEnemy_v01_5
+    21300010: RedEnemy_v01_6
+    21300012: RedEnemy_v01_7
+    21300014: RedEnemy_v01_4
+  serializedVersion: 4
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: -1
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 300
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  - buildTarget: Standalone
+    maxTextureSize: 4096
+    textureFormat: 4
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 1
+  - buildTarget: Android
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  - buildTarget: WebGL
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: ' RedEnemy_v01_0'
+      rect:
+        serializedVersion: 2
+        x: 88
+        y: 1307
+        width: 325
+        height: 557
+      alignment: 9
+      pivot: {x: 0.53427595, y: 0.48000064}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: ' RedEnemy_v01_1'
+      rect:
+        serializedVersion: 2
+        x: 452
+        y: 1303
+        width: 299
+        height: 583
+      alignment: 9
+      pivot: {x: 0.49065998, y: 0.5019106}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: ' RedEnemy_v01_2'
+      rect:
+        serializedVersion: 2
+        x: 815
+        y: 1323
+        width: 302
+        height: 583
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: ' RedEnemy_v01_3'
+      rect:
+        serializedVersion: 2
+        x: 1148
+        y: 1303
+        width: 299
+        height: 583
+      alignment: 9
+      pivot: {x: 0.48785216, y: 0.50479025}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: RedEnemy_v01_5
+      rect:
+        serializedVersion: 2
+        x: 430
+        y: 684
+        width: 305
+        height: 583
+      alignment: 9
+      pivot: {x: 0.5000002, y: 0.5019106}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: RedEnemy_v01_6
+      rect:
+        serializedVersion: 2
+        x: 783
+        y: 643
+        width: 307
+        height: 583
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: RedEnemy_v01_7
+      rect:
+        serializedVersion: 2
+        x: 1142
+        y: 684
+        width: 305
+        height: 583
+      alignment: 9
+      pivot: {x: 0.49724802, y: 0.5052612}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: RedEnemy_v01_4
+      rect:
+        serializedVersion: 2
+        x: 90
+        y: 685
+        width: 319
+        height: 586
+      alignment: 9
+      pivot: {x: 0.45808923, y: 0.54634243}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

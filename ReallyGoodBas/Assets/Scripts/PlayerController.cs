@@ -6,6 +6,9 @@ using System.Security.Policy;
 using UnityEngine.SocialPlatforms;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using UnityEngine.AI;
+
+using System.Linq;
 
 public class PlayerController : MonoBehaviour {
 
@@ -19,6 +22,7 @@ public class PlayerController : MonoBehaviour {
 	public float wallJumpMovementMultiplier = 200f;
 	public float slideSpeed = 2f;
 	public float slideDuration = 0.4f;
+	public float inactiveOpacity = 0.25f;
 	public bool automaticCycle = false;
 	public float cycleSpeed = 2f;
 	public bool cycleRed = false;
@@ -33,7 +37,7 @@ public class PlayerController : MonoBehaviour {
 	private Animator anim;
 
 	// private variables
-	private int color = 1;
+	private int color = 0;
 	private bool isGrounded = false;
 	private bool wallJumping = false;
 	private int wallJumpDirection = -1;
@@ -43,9 +47,9 @@ public class PlayerController : MonoBehaviour {
 	private bool facingRight = true;
 	private LayerMask groundLayerMask;
 	private LayerMask jumpWallLayerMask;
-	private GameObject[] redObjects;
-	private GameObject[] greenObjects;
-	private GameObject[] blueObjects;
+	private List<GameObject> redObjects;
+	private List<GameObject> greenObjects;
+	private List<GameObject> blueObjects;
 
 	void Start () {
 		rb = GetComponent<Rigidbody> ();
@@ -53,24 +57,19 @@ public class PlayerController : MonoBehaviour {
 		anim = GetComponent<Animator> ();
 		groundLayerMask = LayerMask.GetMask ("Ground");
 		jumpWallLayerMask = LayerMask.GetMask ("JumpWall");
-		redObjects = GameObject.FindGameObjectsWithTag ("Red");
-		greenObjects = GameObject.FindGameObjectsWithTag ("Green");
-		blueObjects = GameObject.FindGameObjectsWithTag ("Blue");
-		Transform[] testTransform = GetComponentsInChildren<Transform> ();
-		for (int i = 0; i < testTransform.Length; ++i) {
-			if (testTransform[i].gameObject.CompareTag("PlayerGroundCheck")) {
-				groundCheck = testTransform [i].gameObject;
+		redObjects = GameObject.FindGameObjectsWithTag ("Red").ToList();
+		greenObjects = GameObject.FindGameObjectsWithTag ("Green").ToList();
+		blueObjects = GameObject.FindGameObjectsWithTag ("Blue").ToList();
+		Transform[] playerCheckers = GetComponentsInChildren<Transform> ();
+		for (int i = 0; i < playerCheckers.Length; ++i) {
+			if (playerCheckers[i].gameObject.CompareTag("PlayerGroundCheck")) {
+				groundCheck = playerCheckers [i].gameObject;
 			}
-			else if (testTransform[i].gameObject.CompareTag("PlayerWallCheck")) {
-				wallCheck = testTransform [i].gameObject;
+			else if (playerCheckers[i].gameObject.CompareTag("PlayerWallCheck")) {
+				wallCheck = playerCheckers [i].gameObject;
 			}
 		}
-		for (int i = 0; i < greenObjects.Length; ++i) {
-			greenObjects [i].SetActive (false);
-		}
-		for (int i = 0; i < blueObjects.Length; ++i) {
-			blueObjects [i].SetActive (false);
-		}
+		SetRed ();
 		if (automaticCycle) {
 			StartCoroutine (AutomaticCycleCoroutine (cycleSpeed));
 		}
@@ -171,41 +170,126 @@ public class PlayerController : MonoBehaviour {
 	}
 
 	void SetRed () {
-		color = 1;
-		for (int i = 0; i < redObjects.Length; ++i) {
-			redObjects [i].SetActive (true);
+		color = 0;
+		for (int i = 0; i < redObjects.Count; ++i) {
+			GameObject redObject = redObjects [i].gameObject;
+			if (redObject.layer == LayerMask.NameToLayer("Enemy")) {
+				redObject.GetComponent<BoxCollider> ().enabled = true;
+				redObject.GetComponent<NavMeshAgent> ().speed = redObject.GetComponent<EnemyController>().movementSpeed;
+			}
+			else {
+				redObject.GetComponent<BoxCollider> ().enabled = true;
+				redObject.GetComponent<NavMeshObstacle> ().enabled = true;
+			}
+			redObject.GetComponent<SpriteRenderer> ().color = new Color(1, 0, 0, 1);
 		}
-		for (int i = 0; i < greenObjects.Length; ++i) {
-			greenObjects [i].SetActive (false);
+		for (int i = 0; i < greenObjects.Count; ++i) {
+			GameObject greenObject = greenObjects [i].gameObject;
+			if (greenObject.layer == LayerMask.NameToLayer("Enemy")) {
+				greenObject.GetComponent<BoxCollider> ().enabled = false;
+				greenObject.GetComponent<NavMeshAgent> ().speed = 0;
+			}
+			else {
+				greenObject.GetComponent<BoxCollider> ().enabled = false;
+				greenObject.GetComponent<NavMeshObstacle> ().enabled = false;
+			}
+			greenObject.GetComponent<SpriteRenderer> ().color = new Color(0, 1, 0, inactiveOpacity);
 		}
-		for (int i = 0; i < blueObjects.Length; ++i) {
-			blueObjects [i].SetActive (false);
+		for (int i = 0; i < blueObjects.Count; ++i) {
+			GameObject blueObject = blueObjects [i].gameObject;
+			if (blueObject.layer == LayerMask.NameToLayer("Enemy")) {
+				blueObject.GetComponent<BoxCollider> ().enabled = false;
+				blueObject.GetComponent<NavMeshAgent> ().speed = 0;
+			}
+			else {
+				blueObject.GetComponent<BoxCollider> ().enabled = false;
+				blueObject.GetComponent<NavMeshObstacle> ().enabled = false;
+			}
+			blueObject.GetComponent<SpriteRenderer> ().color = new Color(0, 0, 1, inactiveOpacity);
 		}
 	}
 
 	void SetGreen () {
-		color = 2;
-		for (int i = 0; i < redObjects.Length; ++i) {
-			redObjects [i].SetActive (false);
+		color = 1;
+		for (int i = 0; i < redObjects.Count; ++i) {
+			GameObject redObject = redObjects [i];
+			if (redObject.layer == LayerMask.NameToLayer("Enemy")) {
+				Debug.Log ("found red enemy");
+				redObject.GetComponent<BoxCollider> ().enabled = false;
+				redObject.GetComponent<NavMeshAgent> ().speed = 0;
+				Debug.Log (redObject.GetComponent<NavMeshAgent> ().speed);
+			}
+			else {
+				redObject.GetComponent<BoxCollider> ().enabled = false;
+				redObject.GetComponent<NavMeshObstacle> ().enabled = false;
+			}
+			redObject.GetComponent<SpriteRenderer> ().color = new Color(1, 0, 0, inactiveOpacity);
 		}
-		for (int i = 0; i < greenObjects.Length; ++i) {
-			greenObjects [i].SetActive (true);
+		for (int i = 0; i < greenObjects.Count; ++i) {
+			GameObject greenObject = greenObjects [i];
+			if (greenObject.layer == LayerMask.NameToLayer("Enemy")) {
+				Debug.Log ("found green enemy");
+				greenObject.GetComponent<BoxCollider> ().enabled = true;
+				greenObject.GetComponent<NavMeshAgent> ().speed = greenObject.GetComponent<EnemyController> ().movementSpeed;
+			}
+			else {
+				greenObject.GetComponent<BoxCollider> ().enabled = true;
+				greenObject.GetComponent<NavMeshObstacle> ().enabled = true;
+			}
+			greenObject.GetComponent<SpriteRenderer> ().color = new Color(0, 1, 0, 1);
 		}
-		for (int i = 0; i < blueObjects.Length; ++i) {
-			blueObjects [i].SetActive (false);
+		for (int i = 0; i < blueObjects.Count; ++i) {
+			GameObject blueObject = blueObjects [i];
+			if (blueObject.layer == LayerMask.NameToLayer("Enemy")) {
+				Debug.Log ("found blue enemy");
+				blueObject.GetComponent<BoxCollider> ().enabled = false;
+				blueObject.GetComponent<NavMeshAgent> ().speed = 0;
+			}
+			else {
+				blueObject.GetComponent<BoxCollider> ().enabled = false;
+				blueObject.GetComponent<NavMeshObstacle> ().enabled = false;
+			}
+			blueObject.GetComponent<SpriteRenderer> ().color = new Color(0, 0, 1, inactiveOpacity);
 		}
 	}
 
 	void SetBlue () {
-		color = 3;
-		for (int i = 0; i < redObjects.Length; ++i) {
-			redObjects [i].SetActive (false);
+		color = 2;
+		for (int i = 0; i < redObjects.Count; ++i) {
+			GameObject redObject = redObjects [i];
+			if (redObject.layer == LayerMask.NameToLayer("Enemy")) {
+				redObject.GetComponent<BoxCollider> ().enabled = false;
+				redObject.GetComponent<NavMeshAgent> ().speed = 0;
+			}
+			else {
+				redObject.GetComponent<BoxCollider> ().enabled = false;
+				redObject.GetComponent<NavMeshObstacle> ().enabled = false;
+			}
+			redObject.GetComponent<SpriteRenderer> ().color = new Color(1, 0, 0, inactiveOpacity);
 		}
-		for (int i = 0; i < greenObjects.Length; ++i) {
-			greenObjects [i].SetActive (false);
+		for (int i = 0; i < greenObjects.Count; ++i) {
+			GameObject greenObject = greenObjects [i];
+			if (greenObject.layer == LayerMask.NameToLayer("Enemy")) {
+				greenObject.GetComponent<BoxCollider> ().enabled = false;
+				greenObject.GetComponent<NavMeshAgent> ().speed = 0;
+			}
+			else {
+				greenObject.GetComponent<BoxCollider> ().enabled = false;
+				greenObject.GetComponent<NavMeshObstacle> ().enabled = false;
+			}
+			greenObject.GetComponent<SpriteRenderer> ().color = new Color(0, 1, 0, inactiveOpacity);
 		}
-		for (int i = 0; i < blueObjects.Length; ++i) {
-			blueObjects [i].SetActive (true);
+		for (int i = 0; i < blueObjects.Count; ++i) {
+			GameObject blueObject = blueObjects [i];
+			if (blueObject.layer == LayerMask.NameToLayer("Enemy")) {
+				blueObject.GetComponent<BoxCollider> ().enabled = true;
+				blueObject.GetComponent<NavMeshAgent> ().speed = blueObject.GetComponent<EnemyController> ().movementSpeed;
+			}
+			else {
+				blueObject.GetComponent<BoxCollider> ().enabled = true;
+				blueObject.GetComponent<NavMeshObstacle> ().enabled = true;
+			}
+			blueObject.GetComponent<SpriteRenderer> ().color = new Color(0, 0, 1, 1);
 		}
 	}
 
@@ -279,5 +363,27 @@ public class PlayerController : MonoBehaviour {
 				break;
 			}
 		}
+	}
+
+	public void AddColoredObject (int color, GameObject obj) {
+		switch (color) {
+		case 0:
+			redObjects.Add(obj);
+			break;
+		case 1:
+			greenObjects.Add (obj);
+			break;
+		case 2:
+			blueObjects.Add (obj);
+			break;
+		}
+	}
+
+	public int getColor () {
+		return color;
+	}
+
+	public float getInactiveOpacity () {
+		return inactiveOpacity;
 	}
 }

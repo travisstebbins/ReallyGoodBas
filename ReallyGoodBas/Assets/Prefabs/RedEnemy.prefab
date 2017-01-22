@@ -23,7 +23,8 @@ GameObject:
   - component: {fileID: 114684988048509122}
   - component: {fileID: 195249885031787302}
   - component: {fileID: 65279468471739216}
-  m_Layer: 0
+  - component: {fileID: 95495336710175262}
+  m_Layer: 10
   m_Name: RedEnemy
   m_TagString: Red
   m_Icon: {fileID: 0}
@@ -37,7 +38,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1553734559296092}
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -28.510918, y: 1, z: -2.1608286}
+  m_LocalPosition: {x: -1.733862, y: 20.201172, z: -0.68981355}
   m_LocalScale: {x: 3.0102127, y: 3.0102127, z: 3.0102127}
   m_Children: []
   m_Father: {fileID: 0}
@@ -53,8 +54,25 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1.0000002, z: 1.35}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 0.66, y: 1.61, z: 1.35}
+  m_Center: {x: 0.04, y: -0.04, z: 0}
+--- !u!95 &95495336710175262
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1553734559296092}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: e159e2f3a06fb4247b823c4f8d2e23f0, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &114684988048509122
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -74,7 +92,7 @@ NavMeshAgent:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1553734559296092}
   m_Enabled: 1
-  m_Radius: 0.5
+  m_Radius: 0.82
   m_Speed: 3.5
   m_Acceleration: 15
   avoidancePriority: 50
@@ -84,7 +102,7 @@ NavMeshAgent:
   m_AutoBraking: 1
   m_AutoRepath: 1
   m_Height: 1.0000002
-  m_BaseOffset: 0
+  m_BaseOffset: 0.03
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
 --- !u!212 &212595369695464842
@@ -118,7 +136,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 8d96553b3516246f3a2290407ffa571f, type: 3}
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 93d3d73501e8c43ca84255ad1108adb3, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

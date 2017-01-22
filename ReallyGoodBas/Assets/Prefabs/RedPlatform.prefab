@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4916045581524014}
   - component: {fileID: 212399947106069962}
   - component: {fileID: 65686535239399878}
+  - component: {fileID: 208252902025179730}
   m_Layer: 8
   m_Name: RedPlatform
   m_TagString: Red
@@ -53,6 +54,21 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1.0000002, z: 1.58}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!208 &208252902025179730
+NavMeshObstacle:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1008626353716602}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.5, y: 0.5, z: 0.1}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!212 &212399947106069962
 SpriteRenderer:
   m_ObjectHideFlags: 1

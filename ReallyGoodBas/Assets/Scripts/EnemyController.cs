@@ -14,21 +14,37 @@ public class EnemyController : MonoBehaviour {
 
 	// private variables
 	private GameObject player;
+	private int color;
 
 	void Start () {
-		player = GameObject.FindGameObjectWithTag ("Player");
 		navMesh = GetComponent<NavMeshAgent> ();
 		navMesh.updateRotation = false;
+		navMesh.speed = movementSpeed;
+		player = GameObject.FindGameObjectWithTag ("Player");
+		if (player.GetComponent<PlayerController>().getColor() != color) {
+			navMesh.speed = 0;
+			GetComponent<BoxCollider> ().enabled = false;
+			switch (color) {
+			case 0:
+				GetComponent<SpriteRenderer> ().color = new Color (1, 0, 0, player.GetComponent<PlayerController> ().getInactiveOpacity ());
+				break;
+			case 1:
+				GetComponent<SpriteRenderer> ().color = new Color (0, 1, 0, player.GetComponent<PlayerController> ().getInactiveOpacity ());
+				break;
+			case 2:
+				GetComponent<SpriteRenderer> ().color = new Color (0, 0, 1, player.GetComponent<PlayerController> ().getInactiveOpacity ());
+				break;
+			}
+		}
 	}
 
 	void Update () {
-		navMesh.speed = movementSpeed;
 		//navMesh.stoppingDistance = stoppingDistance;
 		//navMesh.destination = target.position;
 		navMesh.SetDestination (player.transform.position);
 	}
 
-//	void FixedUpdate () {
-//		rb.velocity = Vector2.ClampMagnitude( new Vector2 (player.transform.position.x - transform.position.x, player.transform.position.y - transform.position.y), movementSpeed);
-//	}
+	public void setColor (int _color) {
+		color = _color;
+	}
 }
