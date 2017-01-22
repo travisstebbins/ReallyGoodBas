@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class PowerUpSpawner : MonoBehaviour {
 
@@ -21,7 +22,7 @@ public class PowerUpSpawner : MonoBehaviour {
 	}
 
 	void OnTriggerEnter (Collider other) {
-		if (other.gameObject.CompareTag ("Player")) {
+		if (other.gameObject.CompareTag ("Player") && item) {
 			Debug.Log ("item collision");
 			Destroy (item.gameObject);
 			StartCoroutine (SpawnItemCoroutine (minRespawnTime, maxRespawnTime));

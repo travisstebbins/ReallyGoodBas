@@ -64,7 +64,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d7c6a02baa984e2b83c37e053c30176, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minRespawnTime: 1
-  maxRespawnTime: 2
+  minRespawnTime: 30
+  maxRespawnTime: 40
   powerUpPrefab: {fileID: 1941067008761672, guid: 93f22e63b9e284883a8bb94bef99518d,
     type: 2}

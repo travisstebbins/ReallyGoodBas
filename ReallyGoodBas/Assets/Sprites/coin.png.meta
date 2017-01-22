@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: c872bdc9b3e44439090bca7549248225
-timeCreated: 1485089708
+timeCreated: 1485092210
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -94,12 +94,12 @@ TextureImporter:
       name: coin_0
       rect:
         serializedVersion: 2
-        x: 398
-        y: 881
-        width: 258
-        height: 284
-      alignment: 9
-      pivot: {x: 0.52228045, y: 0.5101207}
+        x: 30
+        y: 898
+        width: 302
+        height: 302
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
@@ -107,10 +107,10 @@ TextureImporter:
       name: coin_1
       rect:
         serializedVersion: 2
-        x: 653
-        y: 882
-        width: 248
-        height: 280
+        x: 384
+        y: 905
+        width: 302
+        height: 302
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -120,10 +120,10 @@ TextureImporter:
       name: coin_2
       rect:
         serializedVersion: 2
-        x: 900
-        y: 877
-        width: 249
-        height: 300
+        x: 785
+        y: 899
+        width: 302
+        height: 302
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -133,10 +133,10 @@ TextureImporter:
       name: coin_3
       rect:
         serializedVersion: 2
-        x: 1150
-        y: 883
-        width: 248
-        height: 280
+        x: 1186
+        y: 893
+        width: 302
+        height: 302
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -146,10 +146,10 @@ TextureImporter:
       name: coin_4
       rect:
         serializedVersion: 2
-        x: 1395
-        y: 888
-        width: 246
-        height: 271
+        x: 1529
+        y: 898
+        width: 302
+        height: 302
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
