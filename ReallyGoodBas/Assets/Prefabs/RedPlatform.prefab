@@ -9,18 +9,18 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1188646166590990}
+  m_RootGameObject: {fileID: 1008626353716602}
   m_IsPrefabParent: 1
---- !u!1 &1188646166590990
+--- !u!1 &1008626353716602
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 4765393767050018}
-  - component: {fileID: 212238512717678512}
-  - component: {fileID: 61174988560591796}
+  - component: {fileID: 4916045581524014}
+  - component: {fileID: 212399947106069962}
+  - component: {fileID: 65686535239399878}
   m_Layer: 8
   m_Name: RedPlatform
   m_TagString: Red
@@ -28,39 +28,37 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4765393767050018
+--- !u!4 &4916045581524014
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1188646166590990}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -8.49, y: -1.88, z: 0}
-  m_LocalScale: {x: 5.1749997, y: 0.3875001, z: 1}
+  m_GameObject: {fileID: 1008626353716602}
+  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 15.81, y: 1, z: 1.67}
+  m_LocalScale: {x: 7.619466, y: 0.8415457, z: 1.4723605}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!61 &61174988560591796
-BoxCollider2D:
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+--- !u!65 &65686535239399878
+BoxCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1188646166590990}
-  m_Enabled: 1
-  m_Density: 1
+  m_GameObject: {fileID: 1008626353716602}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_Offset: {x: 0, y: 0}
+  m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.0000001, y: 1.0000001}
---- !u!212 &212238512717678512
+  m_Size: {x: 1, y: 1.0000002, z: 1.58}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!212 &212399947106069962
 SpriteRenderer:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1188646166590990}
+  m_GameObject: {fileID: 1008626353716602}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
